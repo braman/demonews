@@ -1,5 +1,9 @@
 package kz.news.util;
 
+import java.io.IOException;
+
+import javax.servlet.http.HttpServletResponse;
+
 public class ArticleHelper {
 
 	public static String slugify(String text) {
@@ -31,4 +35,9 @@ public class ArticleHelper {
 		String res = transliterate("\"Отправили здоровых детей, а вышло так\". Пережившие аварию в Турции казахстанцы вернулись домой\r\n");
 		System.out.println(res);
 	}
+	
+	public static void respond404(HttpServletResponse response) throws IOException {
+		response.sendError(HttpServletResponse.SC_NOT_FOUND);
+	}
+	
 }
