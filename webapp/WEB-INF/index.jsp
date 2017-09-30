@@ -4,6 +4,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     
+<%@ taglib prefix = "c" uri="http://java.sun.com/jsp/jstl/core"%>    
+    
 <!DOCTYPE html>
 <html>
 <head>
@@ -16,30 +18,17 @@
 	<%@include file="header.jsp" %>
 
 	<div class="body">
-		<%
-			List<ArticleDTO> top10NewsList = (List)request.getAttribute("top10NewsList");
-		%>
-		
 		<table>
-		
-		<%
-			for (ArticleDTO a: top10NewsList) {
-		%>
-		
-			<tr>
-				<td>
-					<a target="blank" href="article/<%=a.getSubURL() %>">
-						<%=a.getTitle() %>
-					</a>
-				</td>
-			</tr>
-		
-		<%
-			}
-		%>
-		
+			<c:forEach items="${top10NewsList}" var="a">
+				<tr>
+					<td>
+						<a target="blank" href='article/<c:out value="${a.subURL}" />'>
+							<c:out value="${a.title}" />
+						</a>
+					</td>
+				</tr>
+			</c:forEach>
 		</table>
-		
 	</div>
 
 	<%@include file="footer.jsp" %>

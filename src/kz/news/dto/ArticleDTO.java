@@ -38,7 +38,7 @@ public class ArticleDTO {
 		return subURL;
 	}
 
-	private void setSubURL(String subURL) {
+	public void setSubURL(String subURL) {
 		this.subURL = subURL;
 	}
 	
