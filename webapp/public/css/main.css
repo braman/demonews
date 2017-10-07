@@ -1,5 +1,10 @@
+body {
+    background-color: #F1F1F1;
+}
+
 footer {
-	height: 40vh;
+	display: none;
+	
 }
 header {
 	height: 40vh;
@@ -9,4 +14,11 @@ div.body {
 }
 div.article {
 	height: 100vh;
+}
+
+
+
+div.card div.content {
+	max-width: 200px;
+	min-height: 250px;
 }

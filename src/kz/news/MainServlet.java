@@ -22,12 +22,34 @@ public class MainServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		List<ArticleDTO> top10NewsList = ArticleDao.getInstance().getTop10News(); 
+	    int currentPageNo = getArticlePageNoFromURL(request.getRequestURL().toString());
+	    
+	    final int size = 20;
+	    final int totalPages = 100;
+	    
+		List<ArticleDTO> top10NewsList = ArticleDao.getInstance().getArticles(currentPageNo, size); 
 		
 		request.setAttribute("top10NewsList", top10NewsList);
+		request.setAttribute("totalPages", totalPages);
+		request.setAttribute("currentPageNo", currentPageNo);
 		
-		
-		request.getRequestDispatcher("WEB-INF/index.jsp").forward(request, response);
+		request.getRequestDispatcher("/WEB-INF/index.jsp").forward(request, response);
 	}
 
+	private int getArticlePageNoFromURL(String url) {
+        int _index = url.lastIndexOf("//");
+        
+        if (_index > -1) {
+            String valStr = url.substring(_index + 1);
+            
+            try {
+                return Integer.parseInt(valStr);
+            } catch (NumberFormatException e) {
+                return 0;
+            }
+        } 
+        
+        return 0;
+    }
+	
 }

@@ -5,7 +5,6 @@
     pageEncoding="UTF-8"%>
     
 <%@ taglib prefix = "c" uri="http://java.sun.com/jsp/jstl/core"%>    
-    
 <!DOCTYPE html>
 <html>
 <head>
@@ -19,16 +18,45 @@
 
 	<div class="body">
 		<table>
-			<c:forEach items="${top10NewsList}" var="a">
-				<tr>
+			<c:forEach items="${top10NewsList}" var="a" varStatus="cnt">
+				<c:if test = "${ cnt.index % 4 == 0 }">
+    				<tr>
+				</c:if>
 					<td>
-						<a target="blank" href='article/<c:out value="${a.subURL}" />'>
-							<c:out value="${a.title}" />
-						</a>
+					   <div class="card">
+					       <div class="image">
+                                <a target="blank" href='article/<c:out value="${a.subURL}" />'>
+                                    <img src="public/image/sample.jpg" title="Something"/>
+                                </a>
+					       
+					       </div>
+					       
+					       <div class="content">
+								<a target="blank" href='article/<c:out value="${a.subURL}" />'>
+									<c:out value="${a.title}" />
+								</a>
+					       </div>
+					   </div>
+					
+					
 					</td>
-				</tr>
+	
+   	            <c:if test = "${ cnt.last ||  cnt.index % 4 == 3 }">
+    				</tr>
+                </c:if>
+    
+				
 			</c:forEach>
 		</table>
+		
+		<div>
+		  <c:forEach begin="1" end="${totalPages}" var="i" varStatus="cnt">
+            <a target="blank" href='/page/<c:out value="${i}" />'>
+                <c:out value="${i}" />
+            </a>
+          </c:forEach>
+		</div>
+		
 	</div>
 
 	<%@include file="footer.jsp" %>
