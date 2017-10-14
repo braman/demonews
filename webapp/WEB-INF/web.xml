@@ -10,10 +10,56 @@
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
   
+  <servlet>
+    <servlet-name>MainServlet</servlet-name>
+    <servlet-class>kz.news.MainServlet</servlet-class>
+    <init-param>
+        <param-name>jdbcUrl</param-name>
+        <param-value>jdbc:postgresql://localhost:5434/kmk_hl</param-value>
+    </init-param>
+    <init-param>
+        <param-name>dbUsername</param-name>
+        <param-value>postgres</param-value>
+    </init-param>
+    <init-param>
+        <param-name>dbPassword</param-name>
+        <param-value>root</param-value>
+    </init-param>
+  </servlet>
+  
+  <servlet>
+    <servlet-name>ArticleServlet</servlet-name>
+    <servlet-class>kz.news.ArticleServlet</servlet-class>
+    <init-param>
+        <param-name>jdbcUrl</param-name>
+        <param-value>jdbc:postgresql://localhost:5434/kmk_hl</param-value>
+    </init-param>
+    <init-param>
+        <param-name>dbUsername</param-name>
+        <param-value>postgres</param-value>
+    </init-param>
+    <init-param>
+        <param-name>dbPassword</param-name>
+        <param-value>root</param-value>
+    </init-param>
+  </servlet>
+  
+  <servlet-mapping>
+    <servlet-name>MainServlet</servlet-name>
+    <url-pattern>/</url-pattern>
+  </servlet-mapping>
+  
+  <servlet-mapping>
+    <servlet-name>ArticleServlet</servlet-name>
+    <url-pattern>/article/*</url-pattern>
+  </servlet-mapping>
+
   <servlet-mapping>
     <servlet-name>default</servlet-name>
     <url-pattern>/public/*</url-pattern>
   </servlet-mapping>
+  
+  
   
   
 </web-app>

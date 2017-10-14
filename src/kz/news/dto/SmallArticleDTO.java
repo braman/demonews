@@ -2,36 +2,28 @@ package kz.news.dto;
 
 import kz.news.util.ArticleHelper;
 
-public class ArticleDTO {
+public class SmallArticleDTO {
 
 	private Long id;
 	private String title;
-	private String content;
+	private String contentPreview;
 	private String subURL;
 	
-	public ArticleDTO() {}
-	public ArticleDTO(Long id, String title, String content) {
+	public SmallArticleDTO() {}
+	public SmallArticleDTO(Long id, String title, String content) {
 		this.id = id;
 		this.title = title;
-		this.content = content;
+		this.contentPreview = content;
 		
 		setSubURL(ArticleHelper.slugify(title) + "-" + id);
 	}
-
-	
 	
 	public Long getId() {
         return id;
     }
-
-
-
     public void setId(Long id) {
         this.id = id;
     }
-
-
-
     public String getTitle() {
 		return title;
 	}
@@ -40,15 +32,15 @@ public class ArticleDTO {
 		this.title = title;
 	}
 
-	public String getContent() {
-		return content;
-	}
+	public String getContentPreview() {
+        return contentPreview;
+    }
 
-	public void setContent(String content) {
-		this.content = content;
-	}
+    public void setContentPreview(String contentPreview) {
+        this.contentPreview = contentPreview;
+    }
 
-	public String getSubURL() {
+    public String getSubURL() {
 		return subURL;
 	}
 

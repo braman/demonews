@@ -1,23 +1,18 @@
+<%@page import="java.util.List"%>
+<%@page import="kz.news.dto.ArticleDTO" %>    
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix = "c" uri="http://java.sun.com/jsp/jstl/core"%>
+    
+<%@ taglib prefix = "c" uri="http://java.sun.com/jsp/jstl/core"%>    
 <!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>${result.title}</title>
+<title>Articles</title>
 <link type="text/css" rel="stylesheet" href="public/css/main.css"></link>
 </head>
 <body>
-	
-	<jsp:include page="header.jsp" />
-
-	<div class="article">
-        <h1>${result.title}</h1>
-        ${result.content}
-	</div>
-
-    <jsp:include page="footer.jsp" />
-
+	Login page
 </body>
 </html>

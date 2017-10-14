@@ -9,16 +9,16 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<title>Articles</title>
 <link type="text/css" rel="stylesheet" href="public/css/main.css"></link>
 </head>
 <body>
 	
 	<%@include file="header.jsp" %>
-
+    <h1>${top10News.amount}</h1>
 	<div class="body">
 		<table>
-			<c:forEach items="${top10NewsList}" var="a" varStatus="cnt">
+			<c:forEach items="${top10News.resultList}" var="a" varStatus="cnt">
 				<c:if test = "${ cnt.index % 4 == 0 }">
     				<tr>
 				</c:if>
@@ -49,9 +49,11 @@
 			</c:forEach>
 		</table>
 		
+		
+		
 		<div>
-		  <c:forEach begin="1" end="${totalPages}" var="i" varStatus="cnt">
-            <a target="blank" href='/page/<c:out value="${i}" />'>
+		  <c:forEach begin="1" end="${top10News.amount}" var="i" varStatus="cnt">
+            <a target="blank" href='news?page=<c:out value="${i}" />'>
                 <c:out value="${i}" />
             </a>
           </c:forEach>

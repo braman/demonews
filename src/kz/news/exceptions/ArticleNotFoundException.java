@@ -1,7 +1,8 @@
 package kz.news.exceptions;
 
-public class ArticleNotFoundException extends Exception {
+import javax.servlet.ServletException;
 
+public class ArticleNotFoundException extends ServletException {
 	
 	public ArticleNotFoundException(String id) {
 		super("Article not found with id " + id);
